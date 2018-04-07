@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>新增</title>
+</head>
+<body>
+<h2>新增请款单</h2>
+	<form action="{% url 'reqfund:add_action' %}" method="post">
+	    {% csrf_token %}  
+	    <label>请款日期
+	       <input type="text" name="req_date">
+	    </label>
+	    </br>
+	    <label>请款团队
+	       <input type="text" name="req_team">
+	    </label>
+	    </br>
+	    <label>请款账户
+	       <input type="text" name="req_account">
+	    </label>
+	    </br>
+	    <label>请款人
+	       <input type="text" name="rapplicant">
+	    </label>
+	    </br>
+	    <label>代理公司
+	    	<select id="agent" name="ragent">
+	    	{% for agent in agents %}
+    			<option value="agent.agency_company">{{agent.agency_company}}</option>}
+    		{% endfor %}
+			</select>
+		</label><input type="submit" value="新建">
+	    </br>
+	    <label>媒体
+	    	<select id="medium" name="rmedium">
+    		{% for medium in mediums %}
+    			<option value="medium.mtitle">{{medium.mtitle}}</option>}
+    		{% endfor %}
+			</select>
+		</label><input type="submit" value="新建">
+	    </br>
+	    <label>金额
+	       <input type="text" name="ramount">
+	    </label>
+	    </br>
+	    <label>返点比例
+	       <input type="text" name="reb_proprotion">
+	    </label>
+	    </br>
+	    <label>付款方式
+	    	<select id="payway" name="rpay_way">
+    			<option value="垫付">垫付</option>
+    			<option value="预付">预付</option>
+			</select>
+			</label>
+	    </br>
+	    <label>到账时间
+	       <input type="text" name="rpayment_date">
+	    </label>
+	    </br>
+	    <label>打款状态
+	    	<select id="paystate" name="rfund_state">
+    			<option value="已打款">已打款</option>
+    			<option value="未打款">未打款</option>
+			</select>
+		</label>
+		</br>
+	    <label>审核人
+	       <input type="text" name="rauditor">
+	    </label>
+	    </br>
+	    <label>负责人
+	       <input type="text" name="rmanager">
+	    </label>
+	    </br>
+	    <label>审核状态
+	    	<select id="paystate" name="audit_state">
+    			<option value="未审核">未审核</option>
+    			<option value="已审核">已审核</option>
+			</select>
+		</label>
+		</br>
+	    <label>后台推广地址
+	    	<select name="extend_add">
+	    		<option value="rmedium" disabled="">对应媒体自动选择</option>
+	    	</select>
+	    </label>
+	    </br>
+	    <labe>是否提交今日打款
+	       <input type="radio" name="rpayment_date" value="是">是
+	       <input type="radio" name="rpayment_date" value="否">否
+	    </label>
+	    </br>
+	    <input type="submit" value="保存">
+	    <input type="b" value="返回">
+	</form>
+</body>
+
+
+</html>

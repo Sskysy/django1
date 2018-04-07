@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>首页</title>
+</head>
+<body>
+<ul class="nav nav-tabs">
+    <li class='active'><a onclick="javascript:location.href='/add'">新增请款</a></li>
+    <li class='active'><a onclick="javascript:location.href='/trush'">回收站</a></li>
+    <li class='active'><a onclick="javascript:location.href='/edit'">自定义表头</a></li>
+</ul>
+
+<table class="toolTable" width="100%" cellspacing="0" cellpadding="0">
+<caption>请款列表</caption>
+    <tr>
+        <th>请款日期</th>
+        <th>请款团队</th>
+        <th>请款账户</th>
+        <th>请款人</th>
+        <th>代理渠道</th>
+        <th>媒体</th>
+        <th>金额</th>
+        <th>返点比例</th>
+        <th>付款方式</th>
+        <th>到账时间</th>
+        <th>打款状态</th>
+        <th>审核人</th>
+        <th>负责人</th>
+    </tr>
+<tbody>
+    {% for reqfund in reqfunds %}
+        <tr>
+            <td>{{reqfund.req_date}}</td>
+            <td>{{reqfund.req_team}}</td>
+            <td>{{reqfund.req_account}}</td>
+            <td>{{reqfund.rapplicant}}</td>
+            <td>{{reqfund.ragent}}</td>
+            <td>{{reqfund.rmedium}}</td>
+            <td>{{reqfund.reqfund.ramount}}</td>
+            <td>{{reqfund.reb_proprotion}}</td>
+            <td>{{reqfund.rpay_way}}</td>
+            <td>{{reqfund.rpayment_date}}</td>
+            <td>{{reqfund.rfund_state}}</td>
+            <td>{{reqfund.rauditor}}</td>
+            <td>{{reqfund.rmanager}}</td>
+        </tr>
+    {% endfor %}
+</tbody>
+    </table>
+</body>
+</html>
+    
