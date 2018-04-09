@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>代理配置表</title>
+</head>
+<body>
+<table class="toolTable" width="200px" cellspacing="0" cellpadding="0" border="" >
+<caption>代理配置表</caption> 
+	<tr>
+		<th>序号</th>
+		<th>名称</th>
+		<th>计费方式</th>
+	</tr>
+	
+<tbody>
+	{% for medium in mediums%}
+	<tr>
+		<td>{{medium.id}}</td>
+		<td>{{medium.mtitle}}</td>
+		<td>{{medium.account_way}}</td>
+	</tr>
+	{% endfor %}
+</tbody>
+</body>
+</html>

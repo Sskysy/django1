@@ -10,73 +10,93 @@
 <h2>新增请款单</h2>
 	<form action="{% url 'reqfund:add_action' %}" method="post">
 	    {% csrf_token %}  
-	    <label>请款日期
-	       <input type="text" name="req_date">
+		<label>请款日期
+	       &nbsp
+	    	<input type="date" name="req_date">
 	    </label>
 	    </br>
 	    <label>请款团队
+	       &nbsp
 	       <input type="text" name="req_team">
 	    </label>
 	    </br>
 	    <label>请款账户
+	       &nbsp
 	       <input type="text" name="req_account">
 	    </label>
 	    </br>
 	    <label>请款人
-	       <input type="text" name="rapplicant">
+	    	&nbsp&nbsp&nbsp&nbsp
+	    	<input type="text" name="rapplicant">
 	    </label>
 	    </br>
 	    <label>代理公司
+	    	&nbsp
 	    	<select id="agent" name="ragent">
-	    	{% for agent in agents %}
-    			<option value="agent.agency_company">{{agent.agency_company}}</option>}
-    		{% endfor %}
+    			<option value="">代理配置表</option>
+    			{% for agent in agents %}
+    				<option value="agent.agency_company">{{agent.agency_company}}</option>
+    			{% endfor %}
 			</select>
-		</label><input type="submit" value="新建">
-	    </br>
+			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+			<a type="button" href='/ag'>新建</a>
+		</label>
+	   	</br>
 	    <label>媒体
+	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 	    	<select id="medium" name="rmedium">
-    		{% for medium in mediums %}
-    			<option value="medium.mtitle">{{medium.mtitle}}</option>}
-    		{% endfor %}
+	    	<option value="">媒体配置表</option>
+    			{% for medium in mediums %}
+    				<option value="medium.mtitle">{{medium.mtitle}}</option>}
+    			{% endfor %}
 			</select>
-		</label><input type="submit" value="新建">
+			&nbsp&nbsp&nbsp&nbsp
+			<a type="button" href='/am'>新建</a>
+		</label>
 	    </br>
 	    <label>金额
-	       <input type="text" name="ramount">
+	    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		<input type="text" name="ramount" placeholder="RMB">
 	    </label>
 	    </br>
 	    <label>返点比例
-	       <input type="text" name="reb_proprotion">
+	    &nbsp
+	    <input type="text" name="reb_proprotion">
 	    </label>
 	    </br>
 	    <label>付款方式
-	    	<select id="payway" name="rpay_way">
+	    &nbsp
+	    <select id="payway" name="rpay_way">
     			<option value="垫付">垫付</option>
     			<option value="预付">预付</option>
 			</select>
 			</label>
 	    </br>
 	    <label>到账时间
-	       <input type="text" name="rpayment_date">
+	    &nbsp
+	    <input type="date" name="rpayment_date">
 	    </label>
 	    </br>
 	    <label>打款状态
-	    	<select id="paystate" name="rfund_state">
+	    &nbsp
+	    <select id="paystate" name="rfund_state">
     			<option value="已打款">已打款</option>
     			<option value="未打款">未打款</option>
 			</select>
 		</label>
 		</br>
 	    <label>审核人
-	       <input type="text" name="rauditor">
+	    &nbsp&nbsp&nbsp&nbsp
+	    <input type="text" name="rauditor">
 	    </label>
 	    </br>
 	    <label>负责人
-	       <input type="text" name="rmanager">
+	    &nbsp&nbsp&nbsp&nbsp
+	    	<input type="text" name="rmanager" placeholder="不填默认当前用户中文名">
 	    </label>
 	    </br>
 	    <label>审核状态
+	    &nbsp
 	    	<select id="paystate" name="audit_state">
     			<option value="未审核">未审核</option>
     			<option value="已审核">已审核</option>
@@ -85,19 +105,33 @@
 		</br>
 	    <label>后台推广地址
 	    	<select name="extend_add">
-	    		<option value="rmedium" disabled="">对应媒体自动选择</option>
+	    		<option value="rmedium" disabled="">{{extend_add}}媒体对应自动选择</option>
 	    	</select>
 	    </label>
 	    </br>
 	    <labe>是否提交今日打款
-	       <input type="radio" name="rpayment_date" value="是">是
-	       <input type="radio" name="rpayment_date" value="否">否
+	       <input type="radio" name="submit" value="是">是
+	       <input type="radio" name="submit" value="否">否
 	    </label>
 	    </br>
-	    <input type="submit" value="保存">
-	    <input type="b" value="返回">
+	    <input type="submit" value="保存" "onclick="alert('ok！');">
+	    	<script type="text/javascript">
+				var a='你好';
+				alert(a);
+			</script>
+
+	    <a href='/index'><input type="button" value="返回"></a>
 	</form>
+	<!--<script type="text/javascript" src="static/jquery-3.3.1.min.map"></script>
+	<script type="text/javascript">
+		$(function(){
+			$.get('getagt/', function(agt){
+				agent=$('#agent')
+				$.each(agt.data, function(index, item){
+					agent.append('<option value='+item[0]+'>'+item[1]+ '</option>');
+				})
+			});
+		})
+	</script>-->
 </body>
-
-
 </html>
